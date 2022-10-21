@@ -5,9 +5,11 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC-Demo", "MVC-Demo\MVC-Demo.csproj", "{8ECE8702-DBF3-4BE0-A1D4-B6AB8DA7D786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApp-Demo", "Chat-Demo\ChatApp-Demo.csproj", "{B2D4987B-51F6-424C-90A3-D2F4A74F72F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatApp-Demo", "Chat-Demo\ChatApp-Demo.csproj", "{B2D4987B-51F6-424C-90A3-D2F4A74F72F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextSplitterApp-Demo", "TextSplitterApp-Demo\TextSplitterApp-Demo.csproj", "{A73F92B9-CBE7-4D2A-A909-7975F2FA67E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextSplitterApp-Demo", "TextSplitterApp-Demo\TextSplitterApp-Demo.csproj", "{A73F92B9-CBE7-4D2A-A909-7975F2FA67E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskBoardApp-Demo", "TaskBoardApp-Demo\TaskBoardApp-Demo.csproj", "{53DA0B81-FF94-4DCD-ACC4-C97DAA0EB7B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A73F92B9-CBE7-4D2A-A909-7975F2FA67E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A73F92B9-CBE7-4D2A-A909-7975F2FA67E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A73F92B9-CBE7-4D2A-A909-7975F2FA67E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DA0B81-FF94-4DCD-ACC4-C97DAA0EB7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DA0B81-FF94-4DCD-ACC4-C97DAA0EB7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DA0B81-FF94-4DCD-ACC4-C97DAA0EB7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DA0B81-FF94-4DCD-ACC4-C97DAA0EB7B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
