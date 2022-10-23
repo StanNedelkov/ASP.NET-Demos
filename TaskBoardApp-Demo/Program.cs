@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskBoardApp_Demo.Data;
 using TaskBoardApp_Demo.Data.Entities;
+using TaskBoardApp_Demo.Services;
+using TaskBoardApp_Demo.Services.Contracts;
 
 namespace TaskBoardApp_Demo
 {
@@ -17,9 +19,16 @@ namespace TaskBoardApp_Demo
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<User>(options =>
+            options.SignIn.RequireConfirmedAccount = false
+
+            )
                 .AddEntityFrameworkStores<TaskBoardAppDbContext>();
+
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IBoardsService, BoardsService>();
+            builder.Services.AddScoped<ITaskService, TaskService>();
 
             var app = builder.Build();
 

@@ -78,6 +78,24 @@ namespace TaskBoardApp_Demo.Data
                      CreatedOn = DateTime.Now.AddYears(-1),
                      OwnerId = this.GuestUser.Id,
                      BoardId = this.OpenBoard.Id,
+                 },
+                 new Entities.Task()
+                 {
+                     Id = 5,
+                     Title = "Check if DB works correctly",
+                     Description = "Make new tasks in different status",
+                     CreatedOn = DateTime.Now.AddYears(-1),
+                     OwnerId = this.GuestUser.Id,
+                     BoardId = this.InProgressBoard.Id,
+                 },
+                 new Entities.Task()
+                 {
+                     Id = 6,
+                     Title = "Check if DB works correctly 2",
+                     Description = "Make new tasks in different status",
+                     CreatedOn = DateTime.Now.AddYears(-1),
+                     OwnerId = this.GuestUser.Id,
+                     BoardId = this.DoneBoard.Id,
                  }
                 );
 
