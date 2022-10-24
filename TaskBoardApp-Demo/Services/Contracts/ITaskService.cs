@@ -1,4 +1,5 @@
-﻿using TaskBoardApp_Demo.Models;
+﻿using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using TaskBoardApp_Demo.Models;
 
 namespace TaskBoardApp_Demo.Services.Contracts
 {
@@ -11,5 +12,8 @@ namespace TaskBoardApp_Demo.Services.Contracts
         Task<TaskFormModel> EditedTaskAsync(int taskId, string userId);
 
         Task EditTaskAsync(TaskFormModel model, string userId, int taskId);
+
+        Task<TaskViewModel> TaskToDeleteAsync(int taskId, string userId);
+        Task DeleteTaskAsync(TaskViewModel model, string userId);
     }
 }

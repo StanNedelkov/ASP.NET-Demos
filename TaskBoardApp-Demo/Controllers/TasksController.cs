@@ -45,7 +45,7 @@ namespace TaskBoardApp_Demo.Controllers
                 return View(model);
             }
 
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = GetCurrentUser();
 
             await service.AddTaskAsync(model, userId);   
             return RedirectToAction("All","Boards");
@@ -69,7 +69,7 @@ namespace TaskBoardApp_Demo.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = GetCurrentUser();
             try
             {
                 var taskToEdit = await service.EditedTaskAsync(id, userId);  
@@ -100,7 +100,7 @@ namespace TaskBoardApp_Demo.Controllers
                 return View(model);
             }
 
-            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userId = GetCurrentUser();
 
             try
             {
@@ -115,7 +115,47 @@ namespace TaskBoardApp_Demo.Controllers
             {
                 return Unauthorized(ua.Message);
             }
-            
         }
+
+        [HttpGet]
+        public async Task<IActionResult>Delete(int id)
+        {
+            string userId = GetCurrentUser();
+            try
+            {
+                var taskToDelete = await service.TaskToDeleteAsync(id, userId);
+                return View(taskToDelete);
+            }
+            catch (ArgumentNullException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+            catch (UnauthorizedAccessException ue)
+            {
+                return Unauthorized(ue.Message);
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult>Delete(TaskViewModel model)
+        {
+            string userId = GetCurrentUser();
+            try
+            {
+                await service.DeleteTaskAsync(model, userId);
+            }
+            catch (ArgumentNullException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+            catch (UnauthorizedAccessException ua)
+            {
+                return Unauthorized(ua.Message);
+            }
+            return RedirectToAction("All", "Boards");
+        }
+
+        private string GetCurrentUser()
+             => this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        
     }
 }

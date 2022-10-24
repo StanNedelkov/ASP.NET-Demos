@@ -113,5 +113,48 @@ namespace TaskBoardApp_Demo.Services
             editModel.BoardId = model.BoardId;
             await context.SaveChangesAsync();
         }
+
+        public async Task<TaskViewModel> TaskToDeleteAsync(int taskId, string userId)
+        {
+            var task = await context
+                .Tasks
+                .Where(x => x.Id == taskId)
+                .Select(x => new TaskViewModel()
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    Owner = x.Owner.Id,
+                    Title = x.Title,
+                })
+                .FirstOrDefaultAsync();
+
+            if (task == null)
+            {
+                throw new ArgumentNullException(taskNotFoundMessage);
+            }
+            if (task.Owner != userId)
+            {
+                throw new UnauthorizedAccessException(wrongUser);
+            }
+
+            return task;
+        }
+
+        public async System.Threading.Tasks.Task DeleteTaskAsync(TaskViewModel model, string userId)
+        {
+            var entityToDelete = await context
+                .Tasks
+                .FirstOrDefaultAsync(x => x.Id == model.Id);
+            if (entityToDelete == null)
+            {
+                throw new ArgumentNullException(taskNotFoundMessage);
+            }
+            if (entityToDelete.OwnerId != userId)
+            {
+                throw new UnauthorizedAccessException(wrongUser);
+            }
+            context.Tasks.Remove(entityToDelete);
+            await context.SaveChangesAsync();
+        }
     }
 }
