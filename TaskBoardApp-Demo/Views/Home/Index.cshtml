@@ -18,23 +18,27 @@
     }
     else
     {
-        <h1 class="text-center">Welcome, @this.User.Identity.Name!</h1>
+        <h1 class="text-center">Welcome, <l style="color:darkgoldenrod">@this.User.Identity.Name</l>!</h1>
         <hr class="hr-2 bg-secondary" />
         <h4 class="mt-4 text-center">TaskBoard is here for all your tasks.</h4>
         <br />
-        <span class="boardSpan">Tasks: <b>@Model.AllTasksCount</b></span>
-        <ul>
+        <div class="text-center">
+            <h6 class="mt-4 text-center">
+                Tasks: <b>@Model.AllTasksCount</b></h6>
+            
+        <dl>
             @foreach (var board in Model.BoardsWithTaskCount)
             {
-                <li>
-                    <span class="boardSpan">@board.BoardName: <b>@board.TasksCount</b></span>
-                </li>
+                <dd>
+                        <span class="boardSpan">@board.BoardName: <b>@board.TasksCount</b></span>
+                </dd>
             }
-        </ul>
+        </dl>
         @if (Model.UserTasksCount > -1)
         {
-            <h5>You have: <b>@Model.UserTasksCount</b> tasks</h5>
+            <h5>You have: <l>@Model.UserTasksCount</l> tasks</h5>
         }
+        </div>
     }
    
 </section>

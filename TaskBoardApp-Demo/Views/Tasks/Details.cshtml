@@ -13,7 +13,7 @@
             <h3 class="card-title text-center">@Model.Title</h3>
             <p class="card-text"><span class="fw-bold">Description: </span>@Model.Description</p>
             <p class="card-text"><span class="fw-bold">Board: </span>@Model.Board</p>
-            <p class="card-text"><span class="fw-bold">Owner: </span>@Model.Owner</p>
+            <p class="card-text"><span class="fw-bold">Asigned to: </span>@Model.Owner</p>
             <p class="card-text"><span class="fw-bold">Created on: </span>@Model.CreatedOn</p>
             @if (Model.Owner == this.User?.Identity?.Name)
             {
